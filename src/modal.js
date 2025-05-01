@@ -1,7 +1,17 @@
-export {resetForm,formEvents};
+
+function disableAllErrorSpans(form) {
+    // Находим все span внутри формы, у которых класс содержит '_error'
+    const errorSpans = form.querySelectorAll('span[class*="_error"]');
+    errorSpans.forEach(span => {
+      span.textContent = ''; // Очищаем текст ошибки
+    });
+  }
 function resetForm(Popup, Form){
   Popup.closest(".popup").style.display = "none";
+  disableAllErrorSpans(Form);
   Form.reset();
+  const buttonElement = Form.querySelector(".popup__button");
+  buttonElement.classList.add('popup__button_disabled');
 }
 
 function formEvents (Popup , Form, openPopup , closePopup , backgroundPopup){ 
@@ -31,3 +41,4 @@ function formEvents (Popup , Form, openPopup , closePopup , backgroundPopup){
       };
   });
 }
+export {resetForm,formEvents};

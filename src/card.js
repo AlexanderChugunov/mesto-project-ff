@@ -21,11 +21,6 @@ const remove_Cards_callback =  function (deleteButton){
       listItem.remove();
   });
 }
-// const bigger_Image_callback =  function (biggerImage){
-//   biggerImage.addEventListener('click', function () {
-//       Popup.closest(".popup").style.display = "flex";
-//   });
-// }
 
 const cardContainer = document.querySelector('.places__list');
 cardContainer.addEventListener('click', function (evt) {

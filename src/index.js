@@ -16,7 +16,9 @@ import  '../images/like-inactive.svg';
 import initialCards from '../src/cards.js';
 import {addNewCards} from '../src/card.js';
 import {resetForm, formEvents} from '../src/modal.js';
-export {CardTemplate,places_list};
+import {enableValidation} from '../src/validation.js';
+
+
 
 const CardTemplate = document.querySelector('#card-template').content;
 const places_list = document.querySelector(".places__list");
@@ -65,13 +67,20 @@ newCardForm.addEventListener('submit', function (evt) {
     addNewCards(name, link);
     resetForm(newCardPopup, newCardForm);
 });
-
-// const imageBigPopup = document.querySelector(".popup_type_image");
-// const imageBigForm = document.forms["popup__content_content_image"]; 
-// const imageClose = imageBigPopup.querySelector(".popup__close");
+//----------------------------------------------
 
 
-// imageBig.addEventListener('submit', function (evt) {
-//     evt.preventDefault();
-    
-// });
+// включение валидации вызовом enableValidation
+// все настройки передаются при вызове
+
+enableValidation({
+  formSelector: '.popup__form',
+  inputSelector: '.popup__input',
+  submitButtonSelector: '.popup__button',
+  inactiveButtonClass: 'popup__button_disabled',
+  inputErrorClass: 'popup__input_type_error',
+  errorClass: 'popup__error_visible'
+});
+
+
+export {CardTemplate,places_list};
